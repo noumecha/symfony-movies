@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="
-        margin: 0;
-    ">
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Movies Page
+{% endblock %}
+
+{% block body %}
     <div style="
         display: flex;
         width: 100%;
@@ -23,14 +20,46 @@
             padding: 20px;
             font-size: 40px !important;
         ">
-            Welcome to the - Movies App
+            Movies App - by {{ author }}
         </h1>
-        <h4 style="
-            padding: 20px;
-            font-size: 22px;
-        ">
-            {{ title }}
-        </h4>
+        {% if title %}
+            <h4 style="
+                padding: 20px;
+                font-size: 22px;
+            ">
+                {{ title }}
+            </h4>
+        {% else %}
+            <h4 style="
+                padding: 20px;
+                font-size: 22px;
+            ">
+                oh no! No new movie available
+            </h4>
+        {% endif %}
     </div>
-</body>
-</html>
+        <div style="
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 80vh;
+        background-color: black;
+        color: white;
+        text-align: center;
+    ">
+        <ul>
+            {% for movie in movies %}
+                <li>
+                    <h4 style="
+                        padding: 5px;
+                        font-size: 24px;
+                    ">
+                        {{ movie }}
+                    </h4>
+                </li>
+            {% endfor %}
+        </ul>
+    <div>
+{% endblock %}
